@@ -4,4 +4,6 @@ settings:
   evaluation_window_days: 30
   top_n_candidates: 10
   require_human_approval: true
+  data_provider: fixture
   reasoning_provider: null
+  lookback_days: 365

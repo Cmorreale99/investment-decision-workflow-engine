@@ -18,11 +18,13 @@ def test_settings_loads_with_required_keys() -> None:
         "evaluation_window_days",
         "top_n_candidates",
         "require_human_approval",
+        "data_provider",
     ):
         assert key in settings, f"settings.yaml missing key: {key}"
     assert isinstance(settings["evaluation_window_days"], int)
     assert isinstance(settings["top_n_candidates"], int)
     assert isinstance(settings["require_human_approval"], bool)
+    assert settings["data_provider"] in ("fixture", "yfinance")
 
 
 def test_universe_loads_and_meets_mvp_size() -> None:

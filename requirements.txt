@@ -1,6 +1,8 @@
 pydantic>=2.0
 pandas
 numpy
+pyarrow
 pyyaml
 python-dotenv
+yfinance
 pytest>=7.0
