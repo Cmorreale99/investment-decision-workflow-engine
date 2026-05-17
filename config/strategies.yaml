@@ -1,0 +1,12 @@
+strategies:
+  value:
+    enabled: true
+    weight: 0.5
+
+  momentum:
+    enabled: true
+    weight: 0.5
+
+conflict_detection:
+  threshold: 0.4
+  require_sign_disagreement: true

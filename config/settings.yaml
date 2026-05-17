@@ -1,0 +1,7 @@
+settings:
+  rebalance_frequency: weekly
+  benchmark: SPY
+  evaluation_window_days: 30
+  top_n_candidates: 10
+  require_human_approval: true
+  reasoning_provider: null

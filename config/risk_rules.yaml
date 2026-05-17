@@ -1,0 +1,5 @@
+risk_rules:
+  max_single_position_weight: 0.05
+  max_sector_weight: 0.30
+  max_volatility_threshold: 0.40
+  min_liquidity_threshold: 1000000
