@@ -1,4 +1,8 @@
-"""Risk layer: deterministic rule engine.
+"""Risk layer: deterministic boolean rule engine.
 
-Implemented in Phase 4 alongside strategies. Must not call LLMs.
+Phase 4. Must not score, rank, recommend, or call LLMs.
 """
+
+from .rules import RiskConfig, evaluate_risk
+
+__all__ = ["RiskConfig", "evaluate_risk"]
