@@ -32,6 +32,9 @@ dev = [
     "ruff>=0.1.0",
     "black>=23.0",
 ]
+dashboard = [
+    "streamlit",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

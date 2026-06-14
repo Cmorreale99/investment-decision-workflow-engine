@@ -6,3 +6,6 @@ pyyaml
 python-dotenv
 yfinance
 pytest>=7.0
+
+# Optional — Phase 11 dashboard only (not required by the core pipeline or tests)
+streamlit
