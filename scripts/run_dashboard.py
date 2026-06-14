@@ -10,20 +10,16 @@ human decisions through the human review layer — no trade execution.
 from __future__ import annotations
 
 import importlib.util
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 from ai_investment_workflow.utils import get_logger, setup_logging
 
-#: The Streamlit shell module file to run.
-_DASHBOARD = (
-    Path(__file__).resolve().parents[1]
-    / "src"
-    / "ai_investment_workflow"
-    / "app"
-    / "dashboard.py"
-)
+#: Repo ``src`` directory and the Streamlit shell module file to run.
+_SRC = Path(__file__).resolve().parents[1] / "src"
+_DASHBOARD = _SRC / "ai_investment_workflow" / "app" / "dashboard.py"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -37,9 +33,16 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 1
 
+    # Streamlit runs the dashboard as a top-level script; put ``src`` on
+    # PYTHONPATH so it can import the ``ai_investment_workflow`` package
+    # (works whether or not the package is also pip-installed).
+    env = dict(os.environ)
+    existing = env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = os.pathsep.join([str(_SRC), existing]) if existing else str(_SRC)
+
     cmd = [sys.executable, "-m", "streamlit", "run", str(_DASHBOARD), *(argv or [])]
     log.info("launching dashboard: %s", " ".join(cmd))
-    return subprocess.call(cmd)
+    return subprocess.call(cmd, env=env)
 
 
 if __name__ == "__main__":

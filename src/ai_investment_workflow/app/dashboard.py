@@ -12,16 +12,19 @@ from __future__ import annotations
 
 import streamlit as st
 
-from ..schemas import HumanAction
-from ..utils.paths import processed_dir
-from .actions import record_decision
-from .data import DashboardData
-from .views import (
+# Absolute imports: Streamlit runs this file as a top-level script (``__main__``),
+# so it has no parent package for relative imports to resolve against. The
+# launcher puts ``src`` on PYTHONPATH so ``ai_investment_workflow`` is importable.
+from ai_investment_workflow.app.actions import record_decision
+from ai_investment_workflow.app.data import DashboardData
+from ai_investment_workflow.app.views import (
     CandidateCard,
     EvaluationSummary,
     build_candidate_cards,
     build_evaluation_summary,
 )
+from ai_investment_workflow.schemas import HumanAction
+from ai_investment_workflow.utils.paths import processed_dir
 
 
 def _render_metrics(summary: EvaluationSummary) -> None:
